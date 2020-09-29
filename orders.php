@@ -130,7 +130,7 @@ require_once(__DIR__ . "/blocks/head.php");
     </main>
     <?php 
     //footer
-    require_once(__DIR__ . "/blocks/footer.php"); 
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
 </body>
 

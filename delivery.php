@@ -13,16 +13,16 @@ require_once(__DIR__ . "/blocks/head.php");
         <nav class="page-header__menu">
             <ul class="main-menu main-menu--header">
                 <li>
-                    <a class="main-menu__item" href="#">Главная</a>
+                    <a class="main-menu__item" href="/">Главная</a>
                 </li>
                 <li>
                     <a class="main-menu__item" href="#">Новинки</a>
                 </li>
                 <li>
-                    <a class="main-menu__item" href="index.html">Sale</a>
+                    <a class="main-menu__item" href="/">Sale</a>
                 </li>
                 <li>
-                    <a class="main-menu__item active">Доставка</a>
+                    <a class="main-menu__item active" href="/delivery.php">Доставка</a>
                 </li>
             </ul>
         </nav>
@@ -69,7 +69,7 @@ require_once(__DIR__ . "/blocks/head.php");
     </main>
     <?php 
     //footer
-    require_once(__DIR__ . "/blocks/footer.php"); 
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
 </body>
 
