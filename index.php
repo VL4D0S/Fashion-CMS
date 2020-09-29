@@ -7,7 +7,7 @@ require_once(__DIR__ . "/blocks/head.php");
 
 <body>
     <header class="page-header">
-        <a class="page-header__logo" href="#">
+        <a class="page-header__logo" href="/">
             <img src="img/logo.svg" alt="Fashion">
         </a>
         <nav class="page-header__menu">
@@ -16,7 +16,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <a class="main-menu__item active" href="/">Главная</a>
                 </li>
                 <li>
-                    <a class="main-menu__item" href="#">Новинки</a>
+                    <a class="main-menu__item" href="/">Новинки</a>
                 </li>
                 <li>
                     <a class="main-menu__item" href="/">Sale</a>

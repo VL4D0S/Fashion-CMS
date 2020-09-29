@@ -6,16 +6,16 @@
         <nav class="page-footer__menu">
             <ul class="main-menu main-menu--footer">
                 <li>
-                    <a class="main-menu__item" href="/">Главная</a>
+                    <a class="main-menu__item <?php if ($title === 'Fashion') echo 'active'?>" href="/">Главная</a>
                 </li>
                 <li>
-                    <a class="main-menu__item" href="#">Новинки</a>
+                    <a class="main-menu__item" href="/">Новинки</a>
                 </li>
                 <li>
-                    <a class="main-menu__item" href="#">Sale</a>
+                    <a class="main-menu__item" href="/">Sale</a>
                 </li>
                 <li>
-                    <a class="main-menu__item" href="/delivery.php">Доставка</a>
+                    <a class="main-menu__item <?php if ($title === 'Доставка') echo 'active'?>" href="/delivery.php">Доставка</a>
                 </li>
             </ul>
         </nav>
@@ -24,3 +24,6 @@
         </address>
     </div>
 </footer>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="/js/scripts.js"></script>

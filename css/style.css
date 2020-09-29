@@ -455,6 +455,11 @@ a:focus {
     color: rgba(31, 31, 31, 0.5);
 }
 
+.main-menu--footer .main-menu__item.active {
+    color: #e45446;
+    cursor: default;
+}
+
 .intro {
     position: relative;
     height: 400px;
