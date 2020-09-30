@@ -8,7 +8,7 @@ require_once(__DIR__ . "/blocks/head.php");
 <body>
     <header class="page-header">
         <a class="page-header__logo" href="/">
-            <img src="img/logo.svg" alt="Fashion">
+            <img src="/img/logo.svg" alt="Fashion">
         </a>
         <nav class="page-header__menu">
             <ul class="main-menu main-menu--header">
@@ -44,7 +44,7 @@ require_once(__DIR__ . "/blocks/head.php");
                 <span class="product-item__field">2 500 руб.</span>
                 <span class="product-item__field">Женщины</span>
                 <span class="product-item__field">Да</span>
-                <a href="add.html" class="product-item__edit" aria-label="Редактировать"></a>
+                <a href="/add.php" class="product-item__edit" aria-label="Редактировать"></a>
                 <button class="product-item__delete"></button>
             </li>
         </ul>
