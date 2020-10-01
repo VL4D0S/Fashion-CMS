@@ -722,6 +722,10 @@ a:focus {
     width: 270px;
     height: 362px;
 }
+.product__image img {
+    width: 270px;
+    height: 362px;
+}
 .product img {
     -o-object-fit: cover;
     object-fit: cover;

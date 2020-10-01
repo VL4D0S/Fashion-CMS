@@ -98,69 +98,17 @@ require_once(__DIR__ . "/blocks/head.php");
                     <p class="shop__sorting-res">Найдено <span class="res-sort">858</span> моделей</p>
                 </section>
                 <section class="shop__list">
+                    <?php //Show products
+                    require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php");
+                    while($products = $query->fetch(PDO::FETCH_OBJ)): ?>
                     <article class="shop__item product" tabindex="0">
                         <div class="product__image">
-                            <img src="img/products/product-1.jpg" alt="product-name">
+                            <img src="/img/products/<?=$products->img_src?>" alt="product-img">
                         </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
+                        <p class="product__name"><?=$products->name?></p>
+                        <span class="product__price"><?=$products->price?> руб.</span>
                     </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-2.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-3.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-4.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-5.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-6.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-7.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-8.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="img/products/product-9.jpg" alt="product-name">
-                        </div>
-                        <p class="product__name">Платье со складками</p>
-                        <span class="product__price">2 999 руб.</span>
-                    </article>
+                    <?php endwhile; ?>
                 </section>
                 <ul class="shop__paginator paginator">
                     <li>
