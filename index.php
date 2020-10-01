@@ -6,27 +6,9 @@ require_once(__DIR__ . "/blocks/head.php");
 ?>
 
 <body>
-    <header class="page-header">
-        <a class="page-header__logo" href="/">
-            <img src="img/logo.svg" alt="Fashion">
-        </a>
-        <nav class="page-header__menu">
-            <ul class="main-menu main-menu--header">
-                <li>
-                    <a class="main-menu__item active" href="/">Главная</a>
-                </li>
-                <li>
-                    <a class="main-menu__item" href="/">Новинки</a>
-                </li>
-                <li>
-                    <a class="main-menu__item" href="/">Sale</a>
-                </li>
-                <li>
-                    <a class="main-menu__item" href="/delivery.php">Доставка</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+    <?php //header-menu
+    require_once(__DIR__ . "/blocks/header-menu.php");
+    ?>
     <main class="shop-page">
         <header class="intro">
             <div class="intro__wrapper">
