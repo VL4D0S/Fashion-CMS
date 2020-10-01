@@ -9,10 +9,10 @@
                     <a class="main-menu__item <?php if (($title === 'Fashion') && (!$_GET)) echo 'active'?>" href="/">Главная</a>
                 </li>
                 <li>
-                    <a class="main-menu__item <?php if ($_GET['new'] == 'y') echo 'active'?>" href="/?new=y">Новинки</a>
+                    <a class="main-menu__item <?php if ($_GET['cat1'] == 'new') echo 'active'?>" href="/?cat1=new">Новинки</a>
                 </li>
                 <li>
-                    <a class="main-menu__item <?php if ($_GET['sale'] == 'y') echo 'active'?>" href="/?sale=y">Sale</a>
+                    <a class="main-menu__item <?php if ($_GET['cat1'] == 'sale') echo 'active'?>" href="/?cat1=sale">Sale</a>
                 </li>
                 <li>
                     <a class="main-menu__item <?php if (($title === 'Доставка') && (!$_GET)) echo 'active'?>" href="/delivery.php">Доставка</a>
