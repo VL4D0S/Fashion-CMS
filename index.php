@@ -23,19 +23,19 @@ require_once(__DIR__ . "/blocks/head.php");
                         <b class="filter__title">Категории</b>
                         <ul class="filter__list">
                             <li>
-                                <a class="filter__list-item active" href="#">Все</a>
+                                <a class="filter__list-item active" href="">Все</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="#">Женщины</a>
+                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="#">Мужчины</a>
+                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="#">Дети</a>
+                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="#">Аксессуары</a>
+                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
                             </li>
                         </ul>
                     </div>
@@ -77,28 +77,31 @@ require_once(__DIR__ . "/blocks/head.php");
                             <option value="woman">По убыванию</option>
                         </select>
                     </div>
-                    <p class="shop__sorting-res">Найдено <span class="res-sort">858</span> моделей</p>
+                    <?php //for products count
+                    require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
+                    <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount?></span> моделей</p>
                 </section>
                 <section class="shop__list">
                     <?php //Show products
-                    require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php");
-                    while($products = $query->fetch(PDO::FETCH_OBJ)): ?>
+                    foreach($products as $product): ?>
                     <article class="shop__item product" tabindex="0">
                         <div class="product__image">
-                            <img src="/img/products/<?=$products->img_src?>" alt="product-img">
+                            <img src="/img/products/<?=$product->img_src?>" alt="product-img">
                         </div>
-                        <p class="product__name"><?=$products->name?></p>
-                        <span class="product__price"><?=$products->price?> руб.</span>
+                        <p class="product__name"><?=$product->name?></p>
+                        <span class="product__price"><?=$product->price?> руб.</span>
                     </article>
-                    <?php endwhile; ?>
+                    <?php endforeach; ?>
                 </section>
                 <ul class="shop__paginator paginator">
                     <li>
                         <a class="paginator__item">1</a>
                     </li>
+                    <?php if ($productsCount > 9): ?>
                     <li>
                         <a class="paginator__item" href="">2</a>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
         </section>

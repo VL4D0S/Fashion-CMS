@@ -11,3 +11,8 @@ if (!$_GET) {
 }
 $query = mysqlConnect()->prepare($sql);
 $query->execute();
+
+//products count
+$products = $query->fetchAll(PDO::FETCH_OBJ);
+
+$productsCount = count($products);

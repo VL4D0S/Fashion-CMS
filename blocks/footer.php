@@ -6,7 +6,7 @@
         <nav class="page-footer__menu">
             <ul class="main-menu main-menu--footer">
                 <li>
-                    <a class="main-menu__item <?php if (($title === 'Fashion') && (!$_GET)) echo 'active'?>" href="/">Главная</a>
+                    <a class="main-menu__item <?php if (($title === 'Fashion') && (!$_GET['cat1'])) echo 'active'?>" href="/">Главная</a>
                 </li>
                 <li>
                     <a class="main-menu__item <?php if ($_GET['cat1'] == 'new') echo 'active'?>" href="/?cat1=new">Новинки</a>
@@ -15,7 +15,7 @@
                     <a class="main-menu__item <?php if ($_GET['cat1'] == 'sale') echo 'active'?>" href="/?cat1=sale">Sale</a>
                 </li>
                 <li>
-                    <a class="main-menu__item <?php if (($title === 'Доставка') && (!$_GET)) echo 'active'?>" href="/delivery.php">Доставка</a>
+                    <a class="main-menu__item <?php if (($title === 'Доставка') && (!$_GET['cat1'])) echo 'active'?>" href="/delivery.php">Доставка</a>
                 </li>
             </ul>
         </nav>
