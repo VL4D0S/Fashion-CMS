@@ -23,19 +23,19 @@ require_once(__DIR__ . "/blocks/head.php");
                         <b class="filter__title">Категории</b>
                         <ul class="filter__list">
                             <li>
-                                <a class="filter__list-item active" href="">Все</a>
+                                <a class="filter__list-item <?=!$_GET['cat2'] ? 'active' : ''?>" href="/">Все</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'man' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'child' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
                             </li>
                             <li>
-                                <a class="filter__list-item" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'acces' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
                             </li>
                         </ul>
                     </div>
@@ -79,19 +79,21 @@ require_once(__DIR__ . "/blocks/head.php");
                     </div>
                     <?php //for products count
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
-                    <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount?></span> моделей</p>
+                    <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?: 0?></span> моделей</p>
                 </section>
                 <section class="shop__list">
                     <?php //Show products
-                    foreach($products as $product): ?>
-                    <article class="shop__item product" tabindex="0">
-                        <div class="product__image">
-                            <img src="/img/products/<?=$product->img_src?>" alt="product-img">
-                        </div>
-                        <p class="product__name"><?=$product->name?></p>
-                        <span class="product__price"><?=$product->price?> руб.</span>
-                    </article>
-                    <?php endforeach; ?>
+                    if ($query):
+                        foreach($products as $product): ?>
+                        <article class="shop__item product" tabindex="0">
+                            <div class="product__image">
+                                <img src="/img/products/<?=$product->img_src?>" alt="product-img">
+                            </div>
+                            <p class="product__name"><?=$product->name?></p>
+                            <span class="product__price"><?=$product->price?> руб.</span>
+                        </article>
+                        <?php endforeach;
+                    endif; ?>
                 </section>
                 <ul class="shop__paginator paginator">
                     <li>
