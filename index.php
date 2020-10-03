@@ -23,7 +23,7 @@ require_once(__DIR__ . "/blocks/head.php");
                         <b class="filter__title">Категории</b>
                         <ul class="filter__list">
                             <li>
-                                <a class="filter__list-item <?=!$_GET['cat2'] ? 'active' : ''?>" href="/">Все</a>
+                                <a class="filter__list-item <?=!$_GET['cat2'] ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
                             </li>
                             <li>
                                 <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
@@ -64,11 +64,13 @@ require_once(__DIR__ . "/blocks/head.php");
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <select class="custom-form__select" name="category">
-                            <option hidden="">Сортировка</option>
-                            <option value="price">По цене</option>
-                            <option value="name">По названию</option>
-                        </select>
+                        <form action="/">
+                            <select class="custom-form__select" name="category">
+                                <option hidden="">Сортировка</option>
+                                <option value="price">По цене</option>
+                                <option value="name">По названию</option>
+                            </select>
+                        </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" name="prices">
@@ -99,7 +101,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <li>
                         <a class="paginator__item">1</a>
                     </li>
-                    <?php if ($productsCount > 9): ?>
+                    <?php if ($productsCount == 12): ?>
                     <li>
                         <a class="paginator__item" href="">2</a>
                     </li>
