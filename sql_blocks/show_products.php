@@ -3,7 +3,7 @@
 //mysql connect
 require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
 
-if (!$_GET) {
+if (!$_GET['cat1'] && !$_GET['cat2']) {
     $sort = "name";
     $sql = "SELECT * FROM `products` ORDER BY `".$sort."` LIMIT 12";
 

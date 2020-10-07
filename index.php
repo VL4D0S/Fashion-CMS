@@ -66,8 +66,8 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="sort" name="sort">
                             <option hidden="">Сортировка</option>
-                            <option value="price">По цене</option>
-                            <option value="name">По названию</option>
+                            <option value="<?=!$_GET || $_GET["sort"] ? '?sort=price' : $_SERVER['REQUEST_URI'] . '&sort=price'?>">По цене</option>
+                            <option value="<?=!$_GET || $_GET["sort"] ? '?sort=name' : $_SERVER['REQUEST_URI'] . '&sort=name'?>">По названию</option>
                         </select>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
@@ -220,36 +220,6 @@ require_once(__DIR__ . "/blocks/head.php");
     //footer
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
-    <script>
-        // $('#sort').change(function(){
-            // let sort = $('#sort').val();
-            // let sorts = ["price", "name"]; //available sorts
-            // let sortKey = sorts.indexOf(sort);
-            // let sortBy = sorts[sortKey];
-            // if (sortBy) {
-                <?php 
-                //if ($_GET) { ?>
-                    //let wlocation = '&sort=' + sortBy;
-                <?php //} else { ?>
-                    //let wlocation = '?sort=' + sortBy;
-                <?php //} ?>
-        //         window.location.href = wlocation;
-        //         $.ajax({
-        //             url: '/ajax/sort.php',
-        //             type: 'POST',
-        //             cache: false,
-        //             data: {'sortBy':sortBy},
-        //             dataType: 'html',
-        //             success: function(data){
-        //                 if(data){
-        //                 } else{
-        //                     alert("Bad");
-        //                 }
-        //             }
-        //         });
-        //     }
-        // });
-    // </script>
 </body>
 
 </html>
