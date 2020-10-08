@@ -296,10 +296,3 @@ if (document.querySelector(".shop-page")) {
     });
 }
 
-// pushing GET query for sort
-$("#sort").change(function () {
-    let sort = $("#sort").val();
-
-    history.pushState({}, "", sort);
-    location.href = location.href;
-});
