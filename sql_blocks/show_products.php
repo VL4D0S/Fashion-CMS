@@ -5,10 +5,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
 
 $sort = $_GET['sort'];
 
+// var_dump($_SERVER["QUERY_STRING"]);
+
 $sorts = ["id", "name", "price"]; //available values
 $sortKey = array_search($sort, $sorts);
 $sortBy = $sorts[$sortKey];
-echo $sortBy;
+// echo $sortBy;
 
 if (!$_GET['cat1'] && !$_GET['cat2']) {
     $sort = "name";

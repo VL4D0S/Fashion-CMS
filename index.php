@@ -225,7 +225,8 @@ require_once(__DIR__ . "/blocks/head.php");
         $("#sort").change(function () {
             let sort = $("#sort").val();
             <?php 
-            $url = "http://fashion-cms/";
+            // $url = "http://fashion-cms/";
+            //echo $_SERVER["QUERY_STRING"]; --- все get параметры
             // echo $url = add_query_arg( ['my.key'=>'123'], $url );
             ?>
             // history.pushState({}, "", sort);
