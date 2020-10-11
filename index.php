@@ -224,7 +224,6 @@ require_once(__DIR__ . "/blocks/head.php");
         // pushing GET query for sort
         $("#sort").change(function () {
             let sort = $("#sort").val();
-
             <?php 
             // $url = "http://fashion-cms/";
             //echo $_SERVER["QUERY_STRING"]; --- все get параметры
@@ -232,7 +231,6 @@ require_once(__DIR__ . "/blocks/head.php");
             ?>
             // history.pushState({}, "", sort);
             // location.href = location.href;
-            
         });
     </script>
   
