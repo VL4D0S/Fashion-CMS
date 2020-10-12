@@ -227,7 +227,6 @@ require_once(__DIR__ . "/blocks/head.php");
             <?php 
             // $url = "http://fashion-cms/";
             //echo $_SERVER["QUERY_STRING"]; --- все get параметры
-            // echo $url = add_query_arg( ['my.key'=>'123'], $url );
             ?>
             // history.pushState({}, "", sort);
             // location.href = location.href;
