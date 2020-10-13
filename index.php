@@ -232,7 +232,6 @@ require_once(__DIR__ . "/blocks/head.php");
             // location.href = location.href;
         });
     </script>
-  
 </body>
 
 </html>
