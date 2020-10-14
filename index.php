@@ -66,10 +66,12 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="sort" name="sort">
                             <option hidden="">Сортировка</option>
-                            <option value="<?=!$_GET || ($_GET["sort"] && !$_GET["cat1"] && !$_GET["cat2"]) ? '?sort=price' : (!$_GET["sort"] ? $_SERVER['REQUEST_URI'] . '&sort=price' : ($_GET["sort"] = 'price'))?>">По цене</option>
-                            <option value="<?=!$_GET || ($_GET["sort"] && !$_GET["cat1"] && !$_GET["cat2"]) ? '?sort=name' : (!$_GET["sort"] ? $_SERVER['REQUEST_URI'] . '&sort=name' : ($_GET["sort"] = 'name'))?>">По названию</option>
+                            <option value="<?php if(!$_GET || (isset($_GET["sort"]) && ($_GET["cat1"] == NULL) && ($_GET["cat2"] == NULL))) { echo '?sort=price';} else { if (isset($_GET["sort"])) { echo $_GET;} else { echo $_SERVER['REQUEST_URI'] . '&sort=price';}}?>">По цене</option>
+                            <option value="<?php if(!$_GET || (isset($_GET["sort"]) && ($_GET["cat1"] == NULL) && ($_GET["cat2"] == NULL))) { echo '?sort=name';} else { if (isset($_GET["sort"])) { echo $_GET;} else { echo $_SERVER['REQUEST_URI'] . '&sort=name';}}?>">По названию</option>
                         </select>
                     </div>
+                    <?php var_dump((boolean)!$_GET)?>
+
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="order" name="order">
                             <option hidden="">Порядок</option>
@@ -224,12 +226,11 @@ require_once(__DIR__ . "/blocks/head.php");
         // pushing GET query for sort
         $("#sort").change(function () {
             let sort = $("#sort").val();
-            <?php 
-            // $url = "http://fashion-cms/";
-            //echo $_SERVER["QUERY_STRING"]; --- все get параметры
-            ?>
-            // history.pushState({}, "", sort);
-            // location.href = location.href;
+            document.write("<?php $name_value="sort"; ?>");
+            alert("<?=$name_value?>");
+
+            history.pushState({}, "", sort);
+            location.href = location.href;
         });
     </script>
 </body>
