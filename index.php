@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL); //inclusion of errors
+
 $title = "Fashion";
 
 //head
