@@ -66,12 +66,10 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="sort" name="sort">
                             <option hidden="">Сортировка</option>
-                            <option value="<?php if(!$_GET || (isset($_GET["sort"]) && ($_GET["cat1"] == NULL) && ($_GET["cat2"] == NULL))) { echo '?sort=price';} else { if (isset($_GET["sort"])) { echo $_GET;} else { echo $_SERVER['REQUEST_URI'] . '&sort=price';}}?>">По цене</option>
-                            <option value="<?php if(!$_GET || (isset($_GET["sort"]) && ($_GET["cat1"] == NULL) && ($_GET["cat2"] == NULL))) { echo '?sort=name';} else { if (isset($_GET["sort"])) { echo $_GET;} else { echo $_SERVER['REQUEST_URI'] . '&sort=name';}}?>">По названию</option>
+                            <option value="<?php $arr = ['sort' => 'price']; echo $_SERVER['REQUEST_URI'] . '&' . http_build_query($arr); ?> ">По цене</option>
+                            <option value="<?php $arr = ['sort' => 'name']; echo $_SERVER['REQUEST_URI'] . '&' . http_build_query($arr); ?>">По названию</option>
                         </select>
                     </div>
-                    <?php var_dump((boolean)!$_GET)?>
-
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="order" name="order">
                             <option hidden="">Порядок</option>
@@ -226,8 +224,7 @@ require_once(__DIR__ . "/blocks/head.php");
         // pushing GET query for sort
         $("#sort").change(function () {
             let sort = $("#sort").val();
-            document.write("<?php $name_value="sort"; ?>");
-            alert("<?=$name_value?>");
+            // alert(sort);
 
             history.pushState({}, "", sort);
             location.href = location.href;
