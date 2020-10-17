@@ -25,19 +25,19 @@ require_once(__DIR__ . "/blocks/head.php");
                         <b class="filter__title">Категории</b>
                         <ul class="filter__list">
                             <li>
-                                <a class="filter__list-item <?=!$_GET['cat2'] ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
+                                <a class="filter__list-item <?=!isset($_GET['cat2']) ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'man' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'man' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'child' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'child' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'acces' ? 'active' : ''?>" href="<?=$_GET['cat1'] ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
+                                <a class="filter__list-item <?=$_GET['cat2'] == 'acces' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
                             </li>
                         </ul>
                     </div>
@@ -68,8 +68,8 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <select class="custom-form__select" id="sort" name="sort">
                             <option hidden="">Сортировка</option>
-                            <option value="<?php $arr = ['sort' => 'price']; echo $_SERVER['REQUEST_URI'] . '&' . http_build_query($arr); ?> ">По цене</option>
-                            <option value="<?php $arr = ['sort' => 'name']; echo $_SERVER['REQUEST_URI'] . '&' . http_build_query($arr); ?>">По названию</option>
+                            <option value="price">По цене</option>
+                            <option value="name">По названию</option>
                         </select>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
@@ -81,11 +81,11 @@ require_once(__DIR__ . "/blocks/head.php");
                     </div>
                     <?php //for products count
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
-                    <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?: 0?></span> моделей</p>
+                    <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?? 0?></span> моделей</p>
                 </section>
                 <section class="shop__list">
                     <?php //Show products
-                    if ($query):
+                    if (isset($query)):
                         foreach($products as $product): ?>
                         <article class="shop__item product" tabindex="0">
                             <div class="product__image">
@@ -101,7 +101,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <li>
                         <a class="paginator__item">1</a>
                     </li>
-                    <?php if ($productsCount == 12): ?>
+                    <?php if (isset($productsCount) && $productsCount == 12): ?>
                     <li>
                         <a class="paginator__item" href="">2</a>
                     </li>
@@ -223,12 +223,19 @@ require_once(__DIR__ . "/blocks/head.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
     <script>
-        // pushing GET query for sort
+        //ajax query
         $("#sort").change(function () {
             let sort = $("#sort").val();
-            // alert(sort);
 
-            history.pushState({}, "", sort);
+            $.ajax({
+               url: '/sql_blocks/show_products.php',
+               type: 'POST',
+               cache: false,
+               data: {'sort':sort},
+               dataType: 'html',
+               success: function(data){
+               }
+            });
             location.href = location.href;
         });
     </script>

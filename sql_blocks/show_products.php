@@ -1,11 +1,12 @@
 <?php
+$sort = $_POST['sort'] ?? NULL;
+
+echo $sort;
+
+
 
 //mysql connect
 require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
-
-// $sort = $_GET['sort'];
-
-// var_dump($_SERVER["QUERY_STRING"]);
 
 // $sorts = ["id", "name", "price"]; //available values
 // $sortKey = array_search($sort, $sorts);
@@ -31,8 +32,8 @@ if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
         $query = mysqlConnect()->prepare($sql);
         $query->execute([$_GET['cat1']]);
     }
-} elseif (($_GET['cat2'] == "girl") || ($_GET['cat2'] == "man") ||
-          ($_GET['cat2'] == "child") || ($_GET['cat2'] == "acces")) {
+} elseif (isset($_GET['cat2']) && (($_GET['cat2'] == "girl") || ($_GET['cat2'] == "man") ||
+          ($_GET['cat2'] == "child") || ($_GET['cat2'] == "acces"))) {
     $sql = 'SELECT * FROM `products` WHERE `cat2` = ? ORDER BY `id` LIMIT 12';
 
     $query = mysqlConnect()->prepare($sql);
@@ -40,7 +41,7 @@ if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
 }
 
 //products count
-if ($query) {
+if (isset($query)) {
     $products = $query->fetchAll(PDO::FETCH_OBJ);
 
     $productsCount = count($products);
