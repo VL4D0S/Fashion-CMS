@@ -14,7 +14,7 @@ function mysqlConnect(): object
 
     static $pdo = null;
 
-    if (!$pdo) {
+    if (!isset($pdo)) {
         try {
             $pdo = new PDO($dsn, $user, $password);
         } catch (PDOException $error) {
