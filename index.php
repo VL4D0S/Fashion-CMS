@@ -27,7 +27,7 @@ require_once(__DIR__ . "/blocks/head.php");
                         <b class="filter__title">Категории</b>
                         <ul class="filter__list">
                             <li>
-                                <a class="filter__list-item <?=is_null($_GET['cat2']) ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
+                                <a class="filter__list-item <?=!isset($_GET['cat2']) ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
                             </li>
                             <li>
                                 <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
@@ -68,7 +68,7 @@ require_once(__DIR__ . "/blocks/head.php");
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post">
+                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post"> <!-- Поправить Url -->
                             <select class="custom-form__select" id="sort" name="sort">
                                 <option hidden="">Сортировка</option>
                                 <option value="price" type="submit">По цене</option>
@@ -77,7 +77,7 @@ require_once(__DIR__ . "/blocks/head.php");
                         </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post">
+                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post"> <!-- Поправить Url -->
                             <select class="custom-form__select" id="order" name="order">
                                 <option hidden="">Порядок</option>
                                 <option value="ASC">По возрастанию</option>

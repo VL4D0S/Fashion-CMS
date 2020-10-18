@@ -12,7 +12,6 @@ if (isset($_POST['order'])) {
     $order = "ASC";
 }
 
-
 //mysql connect
 require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
 
@@ -21,7 +20,7 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
 // $sortBy = $sorts[$sortKey];
 // echo $sortBy;
 
-if (is_null($_GET['cat1']) && is_null($_GET['cat2'])) {
+if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
     $sql = "SELECT * FROM `products` ORDER BY `".$sort."` ".$order." LIMIT 12";
 
     $query = mysqlConnect()->prepare($sql);
