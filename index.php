@@ -1,6 +1,8 @@
 <?php
 error_reporting(E_ALL); //inclusion of errors
 
+session_start(); //to start working with sessions
+
 $title = "Fashion";
 
 //head
@@ -234,6 +236,7 @@ require_once(__DIR__ . "/blocks/head.php");
                data: {'sort':sort},
                dataType: 'html',
                success: function(data){
+                   alert(data);
                }
             });
             location.href = location.href;

@@ -1,8 +1,12 @@
 <?php
-$sort = $_POST['sort'] ?? NULL;
 
-echo $sort;
+if (isset($_POST['sort'])) {
+    $_SESSION['sort'] = $_POST['sort'];
 
+    $sort = $_SESSION['sort'];
+
+    echo $sort;
+}
 
 
 //mysql connect
@@ -14,7 +18,6 @@ require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
 // echo $sortBy;
 
 if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
-    $sort = "name";
     $sql = "SELECT * FROM `products` ORDER BY `".$sort."` LIMIT 12";
 
     $query = mysqlConnect()->prepare($sql);
