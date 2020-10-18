@@ -68,18 +68,22 @@ require_once(__DIR__ . "/blocks/head.php");
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <select class="custom-form__select" id="sort" name="sort">
-                            <option hidden="">Сортировка</option>
-                            <option value="price">По цене</option>
-                            <option value="name">По названию</option>
-                        </select>
+                        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+                            <select class="custom-form__select" id="sort" name="sort">
+                                <option hidden="">Сортировка</option>
+                                <option value="price" type="submit">По цене</option>
+                                <option value="name" type="submit">По названию</option>
+                            </select>
+                        </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <select class="custom-form__select" id="order" name="order">
-                            <option hidden="">Порядок</option>
-                            <option value="all">По возрастанию</option>
-                            <option value="woman">По убыванию</option>
-                        </select>
+                        <form action="<?=$_SERVER['PHP_SELF']?>" method="post">
+                            <select class="custom-form__select" id="order" name="order">
+                                <option hidden="">Порядок</option>
+                                <option value="ASC">По возрастанию</option>
+                                <option value="DESC">По убыванию</option>
+                            </select>
+                        </form>
                     </div>
                     <?php //for products count
                     require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
@@ -225,21 +229,20 @@ require_once(__DIR__ . "/blocks/head.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
     <script>
-        //ajax query
         $("#sort").change(function () {
-            let sort = $("#sort").val();
+            $(this.form).submit();
 
-            $.ajax({
-               url: '/sql_blocks/show_products.php',
-               type: 'POST',
-               cache: false,
-               data: {'sort':sort},
-               dataType: 'html',
-               success: function(data){
-                   alert(data);
-               }
+            $('form').submit(function(event) {
+                event.preventDefault();
             });
-            location.href = location.href;
+        });
+
+        $("#order").change(function () {
+            $(this.form).submit();
+
+            $('form').submit(function(event) {
+                event.preventDefault();
+            });
         });
     </script>
 </body>
