@@ -4,7 +4,7 @@
  * Функция для подключения к базе данных. Если подключение не удалось, выводит ошибку
  * @return object объект PDO подключения
  */
-function mysqlConnect()
+function mysqlConnect(): object
 {
     $user = 'root';
     $password = '';
