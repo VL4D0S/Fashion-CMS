@@ -65,29 +65,28 @@ require_once(__DIR__ . "/blocks/head.php");
                     <button class="button" type="submit" style="width: 100%">Применить</button>
                 </form>
             </section>
-
+            <?php //for sort products
+                require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post">
+                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post" id="form_sort">
                             <select class="custom-form__select" id="sort" name="sort">
-                                <option hidden="">Сортировка</option>
+                                <option hidden=""><?=$_SESSION['sort'] ?? "Сортировка"?></option>
                                 <option value="price" type="submit">По цене</option>
                                 <option value="name" type="submit">По названию</option>
                             </select>
                         </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post">
+                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post" id="form_order">
                             <select class="custom-form__select" id="order" name="order">
-                                <option hidden="">Порядок</option>
+                                <option hidden=""><?=$_SESSION['order'] ?? "Порядок"?></option>
                                 <option value="ASC">По возрастанию</option>
                                 <option value="DESC">По убыванию</option>
                             </select>
                         </form>
                     </div>
-                    <?php //for products count
-                    require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
                     <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?? 0?></span> моделей</p>
                 </section>
                 <section class="shop__list">
@@ -231,11 +230,11 @@ require_once(__DIR__ . "/blocks/head.php");
     ?>
     <script>
         $("#sort").change(function () {
-            $(this.form).submit();
+            $("#form_sort").submit();
         });
 
         $("#order").change(function () {
-            $(this.form).submit();
+            $("#form_order").submit();
         });
     </script>
 </body>

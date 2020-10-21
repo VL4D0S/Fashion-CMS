@@ -1,15 +1,33 @@
 <?php
 
 if (isset($_POST['sort'])) {
-    $sort = $_POST['sort']; //сохранить в сессию
+    $sorts = ["price", "name"]; //available values
+    $sortKey = array_search($_POST['sort'], $sorts);
+    $sortBy = $sorts[$sortKey];
+    if ($sortKey) {
+        $_SESSION['sort'] = $_POST['sort'];
+        $sort = $_SESSION['sort'];
+    } else {
+        unset($_SESSION['sort']);
+        $sort = "id";
+    }
 } else {
-    $sort = "id";
+    if (isset($_SESSION['sort'])) {
+        $sort = $_SESSION['sort'];
+    } else {
+        $sort = "id";
+    }
 }
 
 if (isset($_POST['order'])) {
-    $order = $_POST['order'];
+    $_SESSION['order'] = $_POST['order'];
+    $order = $_SESSION['order'];
 } else {
-    $order = "ASC";
+    if (isset($_SESSION['order'])) {
+        $order = $_SESSION['order'];
+    } else {
+        $order = "ASC";
+    }
 }
 
 //mysql connect
