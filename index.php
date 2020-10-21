@@ -1,7 +1,8 @@
 <?php
-error_reporting(E_ALL); //inclusion of errors
 
 session_start(); //to start working with sessions
+
+error_reporting(E_ALL); //inclusion of errors
 
 $title = "Fashion";
 
@@ -68,7 +69,7 @@ require_once(__DIR__ . "/blocks/head.php");
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post"> <!-- Поправить Url -->
+                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post">
                             <select class="custom-form__select" id="sort" name="sort">
                                 <option hidden="">Сортировка</option>
                                 <option value="price" type="submit">По цене</option>
@@ -77,7 +78,7 @@ require_once(__DIR__ . "/blocks/head.php");
                         </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
-                        <form action="<?=$_SERVER['PHP_SELF'] . $_SERVER['REQUEST_URI']?>" method="post"> <!-- Поправить Url -->
+                        <form action="<?=$_SERVER['REQUEST_URI']?>" method="post">
                             <select class="custom-form__select" id="order" name="order">
                                 <option hidden="">Порядок</option>
                                 <option value="ASC">По возрастанию</option>
@@ -232,17 +233,17 @@ require_once(__DIR__ . "/blocks/head.php");
         $("#sort").change(function () {
             $(this.form).submit();
 
-            $('form').submit(function(event) {
-                event.preventDefault();
-            });
+            // $('form').submit(function(event) {
+            //     event.preventDefault();
+            // });
         });
 
         $("#order").change(function () {
             $(this.form).submit();
 
-            $('form').submit(function(event) { //проверить
-                event.preventDefault();
-            });
+            // $('form').submit(function(event) { //проверить
+            //     event.preventDefault();
+            // });
         });
     </script>
 </body>
