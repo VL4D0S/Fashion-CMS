@@ -232,18 +232,10 @@ require_once(__DIR__ . "/blocks/head.php");
     <script>
         $("#sort").change(function () {
             $(this.form).submit();
-
-            // $('form').submit(function(event) {
-            //     event.preventDefault();
-            // });
         });
 
         $("#order").change(function () {
             $(this.form).submit();
-
-            // $('form').submit(function(event) { //проверить
-            //     event.preventDefault();
-            // });
         });
     </script>
 </body>
