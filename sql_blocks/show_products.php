@@ -1,16 +1,18 @@
 <?php
 
 if (isset($_POST['sort'])) {
-    $sorts = ["price", "name"]; //available values
-    $sortKey = array_search($_POST['sort'], $sorts);
-    $sortBy = $sorts[$sortKey];
-    if ($sortKey) {
-        $_SESSION['sort'] = $_POST['sort'];
-        $sort = $_SESSION['sort'];
-    } else {
-        unset($_SESSION['sort']);
-        $sort = "id";
-    }
+    //$sorts = ["price", "name"]; //available values
+    // $sortKey = array_search($_POST['sort'], $sorts);
+    // $sortBy = $sorts[$sortKey];
+    // if ($sortKey) {
+    //     $_SESSION['sort'] = $_POST['sort'];
+    //     $sort = $_SESSION['sort'];
+    // } else {
+    //     unset($_SESSION['sort']);
+    //     $sort = "id";
+    // }
+    $_SESSION['sort'] = $_POST['sort'];
+    $sort = $_SESSION['sort'];
 } else {
     if (isset($_SESSION['sort'])) {
         $sort = $_SESSION['sort'];
