@@ -1,6 +1,6 @@
 <?php
 
-if (isset($_POST['sort'])) {
+if (isset($_POST['sort'])) { //сделать зажание с сессиями
     //$sorts = ["price", "name"]; //available values
     // $sortKey = array_search($_POST['sort'], $sorts);
     // $sortBy = $sorts[$sortKey];
