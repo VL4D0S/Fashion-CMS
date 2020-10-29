@@ -12,6 +12,7 @@ if (isset($_POST['sort'])) {
     // }
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
+    
     $_SESSION['uri'] = $_SERVER['REQUEST_URI'];
 } else {
     if (isset($_SESSION['sort'])) {
@@ -27,16 +28,21 @@ if (isset($_POST['sort'])) {
 }
 
 if (isset($_POST['order'])) {
-    // $_SESSION['order'] = $_POST['order'];
-    // $order = $_SESSION['order'];
-    $order = $_POST['order'];
+    $_SESSION['order'] = $_POST['order'];
+    $order = $_SESSION['order'];
+
+    $_SESSION['uri'] = $_SERVER['REQUEST_URI'];
 } else {
-    // if (isset($_SESSION['order'])) {
-    //     $order = $_SESSION['order'];
-    // } else {
-    //     $order = "ASC";
-    // }
-    $order = "ASC";
+    if (isset($_SESSION['order'])) {
+        if (isset($_SESSION['uri']) && $_SERVER['REQUEST_URI'] !== $_SESSION['uri']) {
+            $order = "ASC";
+            unset($_SESSION['order']);
+        } else {
+            $order = $_SESSION['order'];
+        }
+    } else {
+        $order = "ASC";
+    }
 }
 
 //mysql connect

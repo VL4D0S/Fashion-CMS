@@ -72,7 +72,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <form action="<?=$_SERVER['REQUEST_URI']?>" method="post" id="form_sort">
                             <select class="custom-form__select" id="sort" name="sort">
-                                <option hidden=""><?=$_SESSION['sort'] ?? "Сортировка"?></option>
+                                <option hidden=""><?=isset($_SESSION['sort']) ? ($_SESSION['sort'] === "price" ? "По цене" : "По названию") : "Сортировка"?></option>
                                 <option value="price" type="submit">По цене</option>
                                 <option value="name" type="submit">По названию</option>
                             </select>
@@ -81,7 +81,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <form action="<?=$_SERVER['REQUEST_URI']?>" method="post" id="form_order">
                             <select class="custom-form__select" id="order" name="order">
-                                <option hidden=""><?=$order ?? "Порядок"?></option>
+                                <option hidden=""><?=isset($_SESSION['order']) ? ($_SESSION['order'] === "ASC" ? "По возрастанию" : "По убыванию") : "Порядок"?></option>
                                 <option value="ASC">По возрастанию</option>
                                 <option value="DESC">По убыванию</option>
                             </select>
