@@ -1,6 +1,5 @@
 <?php
-
-if (isset($_POST['sort'])) { //сделать зажание с сессиями
+if (isset($_POST['sort'])) {
     //$sorts = ["price", "name"]; //available values
     // $sortKey = array_search($_POST['sort'], $sorts);
     // $sortBy = $sorts[$sortKey];
@@ -13,23 +12,31 @@ if (isset($_POST['sort'])) { //сделать зажание с сессиями
     // }
     $_SESSION['sort'] = $_POST['sort'];
     $sort = $_SESSION['sort'];
+    $_SESSION['uri'] = $_SERVER['REQUEST_URI'];
 } else {
     if (isset($_SESSION['sort'])) {
-        $sort = $_SESSION['sort'];
+        if (isset($_SESSION['uri']) && $_SERVER['REQUEST_URI'] !== $_SESSION['uri']) {
+            $sort = "id";
+            unset($_SESSION['sort']);
+        } else {
+            $sort = $_SESSION['sort'];
+        }
     } else {
         $sort = "id";
     }
 }
 
 if (isset($_POST['order'])) {
-    $_SESSION['order'] = $_POST['order'];
-    $order = $_SESSION['order'];
+    // $_SESSION['order'] = $_POST['order'];
+    // $order = $_SESSION['order'];
+    $order = $_POST['order'];
 } else {
-    if (isset($_SESSION['order'])) {
-        $order = $_SESSION['order'];
-    } else {
-        $order = "ASC";
-    }
+    // if (isset($_SESSION['order'])) {
+    //     $order = $_SESSION['order'];
+    // } else {
+    //     $order = "ASC";
+    // }
+    $order = "ASC";
 }
 
 //mysql connect

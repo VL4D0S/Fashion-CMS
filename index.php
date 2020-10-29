@@ -81,7 +81,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <div class="shop__sorting-item custom-form__select-wrapper">
                         <form action="<?=$_SERVER['REQUEST_URI']?>" method="post" id="form_order">
                             <select class="custom-form__select" id="order" name="order">
-                                <option hidden=""><?=$_SESSION['order'] ?? "Порядок"?></option>
+                                <option hidden=""><?=$order ?? "Порядок"?></option>
                                 <option value="ASC">По возрастанию</option>
                                 <option value="DESC">По убыванию</option>
                             </select>
@@ -229,11 +229,11 @@ require_once(__DIR__ . "/blocks/head.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
     <script>
-        $("#sort").change(function () {
+        $("#sort").change(function() {
             $("#form_sort").submit();
         });
 
-        $("#order").change(function () {
+        $("#order").change(function() {
             $("#form_order").submit();
         });
     </script>
