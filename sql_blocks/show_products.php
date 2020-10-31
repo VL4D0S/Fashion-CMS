@@ -1,57 +1,10 @@
 <?php
-if (isset($_POST['sort'])) {
-    //$sorts = ["price", "name"]; //available values
-    // $sortKey = array_search($_POST['sort'], $sorts);
-    // $sortBy = $sorts[$sortKey];
-    // if ($sortKey) {
-    //     $_SESSION['sort'] = $_POST['sort'];
-    //     $sort = $_SESSION['sort'];
-    // } else {
-    //     unset($_SESSION['sort']);
-    //     $sort = "id";
-    // }
-    $_SESSION['sort'] = $_POST['sort'];
-    $sort = $_SESSION['sort'];
-    
-    $_SESSION['uri'] = $_SERVER['REQUEST_URI'];
-} else {
-    if (isset($_SESSION['sort'])) {
-        if (isset($_SESSION['uri']) && $_SERVER['REQUEST_URI'] !== $_SESSION['uri']) {
-            $sort = "id";
-            unset($_SESSION['sort']);
-        } else {
-            $sort = $_SESSION['sort'];
-        }
-    } else {
-        $sort = "id";
-    }
-}
 
-if (isset($_POST['order'])) {
-    $_SESSION['order'] = $_POST['order'];
-    $order = $_SESSION['order'];
-
-    $_SESSION['uri'] = $_SERVER['REQUEST_URI'];
-} else {
-    if (isset($_SESSION['order'])) {
-        if (isset($_SESSION['uri']) && $_SERVER['REQUEST_URI'] !== $_SESSION['uri']) {
-            $order = "ASC";
-            unset($_SESSION['order']);
-        } else {
-            $order = $_SESSION['order'];
-        }
-    } else {
-        $order = "ASC";
-    }
-}
+//sorting
+require_once($_SERVER['DOCUMENT_ROOT'] . "/sorting.php");
 
 //mysql connect
 require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
-
-// $sorts = ["id", "name", "price"]; //available values
-// $sortKey = array_search($sort, $sorts);
-// $sortBy = $sorts[$sortKey];
-// echo $sortBy;
 
 if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
     $sql = "SELECT * FROM `products` ORDER BY `".$sort."` ".$order." LIMIT 12";
