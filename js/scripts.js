@@ -296,3 +296,12 @@ if (document.querySelector(".shop-page")) {
     });
 }
 
+//for sort
+$("#sort").change(function() {
+    $("#form_sort").submit();
+});
+
+//for order
+$("#order").change(function() {
+    $("#form_order").submit();
+});

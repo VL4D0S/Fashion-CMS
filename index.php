@@ -76,6 +76,7 @@ require_once(__DIR__ . "/blocks/head.php");
                                 <option value="price" type="submit">По цене</option>
                                 <option value="name" type="submit">По названию</option>
                             </select>
+                            <input type="hidden" name="scroll" value="">
                         </form>
                     </div>
                     <div class="shop__sorting-item custom-form__select-wrapper">
@@ -85,6 +86,7 @@ require_once(__DIR__ . "/blocks/head.php");
                                 <option value="ASC">По возрастанию</option>
                                 <option value="DESC">По убыванию</option>
                             </select>
+                            <input type="hidden" name="scroll" value="">
                         </form>
                     </div>
                     <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?? 0?></span> моделей</p>
@@ -229,13 +231,15 @@ require_once(__DIR__ . "/blocks/head.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
     <script>
-        $("#sort").change(function() {
-            $("#form_sort").submit();
+        $(window).on("scroll", function(){
+            $('input[name="scroll"]').val($(window).scrollTop());
         });
 
-        $("#order").change(function() {
-            $("#form_order").submit();
-        });
+        <?php if (!empty($_POST['scroll'])): ?>
+        $(document).ready(function(){
+            window.scrollTo(0, <?=intval($_POST['scroll']);?>);  
+        }); 
+        <?php endif; ?>
     </script>
 </body>
 
