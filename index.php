@@ -31,16 +31,16 @@ require_once(__DIR__ . "/blocks/head.php");
                                 <a class="filter__list-item <?=!isset($_GET['cat2']) ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] : '/'?>">Все</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'girl' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
+                                <a class="filter__list-item <?=(isset($_GET['cat2']) && $_GET['cat2'] === 'girl') ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=girl">Женщины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'man' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
+                                <a class="filter__list-item <?=(isset($_GET['cat2']) && $_GET['cat2'] === 'man') ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=man">Мужчины</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'child' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
+                                <a class="filter__list-item <?=(isset($_GET['cat2']) && $_GET['cat2'] === 'child') ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=child">Дети</a>
                             </li>
                             <li>
-                                <a class="filter__list-item <?=$_GET['cat2'] == 'acces' ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
+                                <a class="filter__list-item <?=(isset($_GET['cat2']) && $_GET['cat2'] === 'acces') ? 'active' : ''?>" href="<?=isset($_GET['cat1']) ? '?cat1=' . $_GET['cat1'] . '&' : '?'?>cat2=acces">Аксессуары</a>
                             </li>
                         </ul>
                     </div>
