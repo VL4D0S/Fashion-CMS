@@ -27,11 +27,11 @@ function mysqlConnect(): object
 
 /**
  * Функция для действия (сортировки/установки порядка) над товарами
- * @return string значение сортировки/установки порядка над товарами
  * @param string $act действие, которое будет применяться к товарам
  * @param string $postVal значение массива $_POST для передаваемого действия
  * @param array $arrVals массив допустимых значений для передаваемого действия
  * @param string $defaultAct значение по умолчанию для передаваемого действия
+ * @return string значение сортировки/установки порядка над товарами
  */
 function actionOnProducts(string $act, string $postVal, array $arrVals, string $defaultAct): string
 {
