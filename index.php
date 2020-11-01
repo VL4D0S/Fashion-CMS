@@ -231,6 +231,8 @@ require_once(__DIR__ . "/blocks/head.php");
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
     <script>
+
+        //to save the scroll value
         $(window).on("scroll", function(){
             $('input[name="scroll"]').val($(window).scrollTop());
         });
