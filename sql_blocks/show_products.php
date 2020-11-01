@@ -1,10 +1,14 @@
 <?php
 
-//sorting
-require_once($_SERVER['DOCUMENT_ROOT'] . "/sorting.php");
+require_once($_SERVER['DOCUMENT_ROOT'] . "/functions.php");
 
-//mysql connect
-require_once($_SERVER['DOCUMENT_ROOT'] . "/mysql_connect.php");
+//sort
+$sortPostVal = $_POST['sort'] ?? "null";
+$sort = actionOnProducts("sort", $sortPostVal, ["price", "name"], "id");
+
+//order
+$orderPostVal = $_POST['order'] ?? "null";
+$order = actionOnProducts("order", $orderPostVal, ["ASC", "DESC"], "ASC");
 
 if (!isset($_GET['cat1']) && !isset($_GET['cat2'])) {
     $sql = "SELECT * FROM `products` ORDER BY `".$sort."` ".$order." LIMIT 12";
