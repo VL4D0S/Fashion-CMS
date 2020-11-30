@@ -3,11 +3,11 @@
 //functions
 require_once($_SERVER['DOCUMENT_ROOT'] . "/functions.php");
 
-//sort
+//get sort
 $sortPostVal = $_POST['sort'] ?? "null";
 $sort = actionOnProducts("sort", $sortPostVal, ["price", "name"], "id");
 
-//order
+//get order
 $orderPostVal = $_POST['order'] ?? "null";
 $order = actionOnProducts("order", $orderPostVal, ["ASC", "DESC"], "ASC");
 
