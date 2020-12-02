@@ -17,8 +17,8 @@ function mysqlConnect(): object
     if (is_null($pdo)) {
         try {
             $pdo = new PDO($dsn, $user, $password);
-        } catch (PDOException $error) {
-            echo 'Подключение не удалось: ' . $error->getMessage();
+        } catch (PDOException $e) {
+            echo 'Подключение не удалось: ' . $e->getMessage();
         }
     }
 
