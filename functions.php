@@ -2,7 +2,7 @@
 
 /**
  * Функция для подключения к базе данных. Если подключение не удалось, выводит ошибку
- * @return object объект PDO подключения
+ * @return object объект класса PDO
  */
 function mysqlConnect(): object
 {
