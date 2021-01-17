@@ -10,7 +10,8 @@ function mysqlConnect(): object
     $password = '';
     $db = 'fashion';
     $host = 'localhost';
-    $dsn = 'mysql:host=' . $host . ';dbname=' . $db;
+    $charset = 'utf8';
+    $dsn = 'mysql:host=' . $host . ';dbname=' . $db . ';charset=' . $charset;
 
     static $pdo = null;
 
