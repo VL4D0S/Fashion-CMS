@@ -1,8 +1,8 @@
 <?php
 
-session_start(); //to start working with sessions
+session_start();
 
-error_reporting(E_ALL); //inclusion of errors
+error_reporting(E_ALL);
 
 $title = "Fashion";
 
@@ -11,7 +11,9 @@ require_once(__DIR__ . "/blocks/head.php");
 ?>
 
 <body>
-    <?php //header-menu
+    <?php
+    
+    //header-menu
     require_once(__DIR__ . "/blocks/header-menu.php");
     ?>
     <main class="shop-page">
@@ -65,8 +67,11 @@ require_once(__DIR__ . "/blocks/head.php");
                     <button class="button" type="submit" style="width: 100%">Применить</button>
                 </form>
             </section>
-            <?php //for sort products
-                require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php"); ?>
+            <?php
+            
+            //for sort products
+            require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php");
+            ?>
             <div class="shop__wrapper">
                 <section class="shop__sorting">
                     <div class="shop__sorting-item custom-form__select-wrapper">
@@ -92,18 +97,22 @@ require_once(__DIR__ . "/blocks/head.php");
                     <p class="shop__sorting-res">Найдено <span class="res-sort"><?=$productsCount ?? 0?></span> моделей</p>
                 </section>
                 <section class="shop__list">
-                    <?php //Show products
-                    if (isset($query)):
-                        foreach($products as $product): ?>
-                        <article class="shop__item product" tabindex="0">
-                            <div class="product__image">
-                                <img src="/img/products/<?=$product->img_src?>" alt="product-img">
-                            </div>
-                            <p class="product__name"><?=$product->name?></p>
-                            <span class="product__price"><?=$product->price?> руб.</span>
-                        </article>
-                        <?php endforeach;
-                    endif; ?>
+                <?php
+                
+                //Show products
+                if (isset($query)):
+                    foreach($products as $product): ?>
+
+                    <article class="shop__item product" tabindex="0">
+                        <div class="product__image">
+                            <img src="/img/products/<?=$product->img_src?>" alt="product-img">
+                        </div>
+                        <p class="product__name"><?=$product->name?></p>
+                        <span class="product__price"><?=$product->price?> руб.</span>
+                    </article>
+                    
+                    <?php endforeach;
+                endif; ?>
                 </section>
                 <ul class="shop__paginator paginator">
                     <li>
@@ -227,6 +236,7 @@ require_once(__DIR__ . "/blocks/head.php");
         </section>
     </main>
     <?php 
+    
     //footer
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
