@@ -12,7 +12,7 @@ require_once(__DIR__ . "/blocks/head.php");
 
 <body>
     <?php
-    
+
     //header-menu
     require_once(__DIR__ . "/blocks/header-menu.php");
     ?>
@@ -235,8 +235,8 @@ require_once(__DIR__ . "/blocks/head.php");
             </div>
         </section>
     </main>
-    <?php 
-    
+    <?php
+
     //footer
     require_once($_SERVER['DOCUMENT_ROOT'] . "/blocks/footer.php");
     ?>
@@ -247,7 +247,7 @@ require_once(__DIR__ . "/blocks/head.php");
             $('input[name="scroll"]').val($(window).scrollTop());
         });
 
-        <?php if (!empty($_POST['scroll'])): ?>
+        <?php if (!empty($_POST['scroll'])) : ?>
         $(document).ready(function(){
             window.scrollTo(0, <?=intval($_POST['scroll']);?>);  
         }); 
