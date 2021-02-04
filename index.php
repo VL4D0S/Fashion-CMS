@@ -68,7 +68,7 @@ require_once(__DIR__ . "/blocks/head.php");
                 </form>
             </section>
             <?php
-            
+
             //for sort products
             require_once($_SERVER['DOCUMENT_ROOT'] . "/sql_blocks/show_products.php");
             ?>
@@ -98,11 +98,10 @@ require_once(__DIR__ . "/blocks/head.php");
                 </section>
                 <section class="shop__list">
                 <?php
-                
-                //Show products
-                if (isset($query)):
-                    foreach($products as $product): ?>
 
+                //Show products
+                if (isset($query)) :
+                    foreach ($products as $product) : ?>
                     <article class="shop__item product" tabindex="0">
                         <div class="product__image">
                             <img src="/img/products/<?=$product->img_src?>" alt="product-img">
@@ -118,7 +117,7 @@ require_once(__DIR__ . "/blocks/head.php");
                     <li>
                         <a class="paginator__item">1</a>
                     </li>
-                    <?php if (isset($productsCount) && $productsCount == 12): ?>
+                    <?php if (isset($productsCount) && $productsCount == 12) : ?>
                     <li>
                         <a class="paginator__item" href="">2</a>
                     </li>
